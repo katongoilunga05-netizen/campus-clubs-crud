@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Campus Clubs</title>
+<style>
+  body{font-family:system-ui,sans-serif;max-width:1000px;margin:0 auto;padding:20px;background:#f5f6fa;color:#222}
+  h1{margin-bottom:4px} .card{background:#fff;border-radius:10px;padding:16px;margin:16px 0;box-shadow:0 1px 4px #0002}
+  form{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:10px}
+  input,select,textarea{padding:8px;border:1px solid #ccc;border-radius:6px;font:inherit;width:100%;box-sizing:border-box}
+  button{padding:8px 14px;border:0;border-radius:6px;cursor:pointer;background:#2563eb;color:#fff;font:inherit}
+  button.sec{background:#6b7280} button.del{background:#dc2626} button.edit{background:#16a34a}
+  .wide{grid-column:1/-1} .actions{display:flex;gap:8px}
+  .scroll{overflow-x:auto} table{width:100%;border-collapse:collapse;font-size:14px}
+  th,td{padding:8px;border-bottom:1px solid #e5e7eb;text-align:left} th{background:#eef2ff}
+  #msg{min-height:20px;font-size:14px}
+</style>
+</head>
+<body>
+<h1>Campus Clubs</h1>
+<div id="msg"></div>
+
+<div class="card">
+  <h3 id="formTitle">Add a club</h3>
+  <form id="clubForm">
+    <input type="hidden" id="id">
+    <input id="name" placeholder="Club name *" required>
+    <select id="category">
+      <option>Technology</option><option>Academic</option><option>Sports</option>
+      <option>Arts</option><option>Community</option><option>Games</option><option>Business</option>
+    </select>
+    <select id="meeting_day">
+      <option>Monday</option><option>Tuesday</option><option>Wednesday</option><option>Thursday</option>
+      <option>Friday</option><option>Saturday</option><option>Sunday</option>
+    </select>
+    <input id="contact_email" type="email" placeholder="Contact email">
+    <input id="member_count" type="number" min="0" placeholder="Member count">
+    <textarea id="description" class="wide" rows="2" placeholder="Description"></textarea>
+    <div class="actions wide">
+      <button type="submit" id="saveBtn">Save</button>
+      <button type="button" class="sec" id="cancelBtn" style="display:none">Cancel edit</button>
+    </div>
+  </form>
+</div>
+
+<div class="card scroll">
+  <table>
+    <thead><tr><th>ID</th><th>Name</th><th>Category</th><th>Day</th><th>Email</th><th>Members</th><th>Updated</th><th>Actions</th></tr></thead>
+    <tbody id="rows"></tbody>
+  </table>
+</div>
+<script src="app.js"></script>
+</body>
+</html>
